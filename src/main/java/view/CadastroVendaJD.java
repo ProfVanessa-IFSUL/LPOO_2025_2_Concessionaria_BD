@@ -245,7 +245,8 @@ public class CadastroVendaJD extends javax.swing.JDialog {
         
         try {
             // 1 - instanciar o objeto do tipo Venda
-            venda = new Venda();
+            if(venda == null)
+                venda = new Venda();
             
             // 2 - setar os valores dos campos txt... para o objeto  venda
             
@@ -261,6 +262,10 @@ public class CadastroVendaJD extends javax.swing.JDialog {
             venda.setVendedor((Vendedor) cmbVendedor.getSelectedItem());
             venda.setVeiculo((Veiculo) cmbVeiculo.getSelectedItem());
 
+            // Alterada a disponibilidade do veículo:
+            venda.getVeiculo().setDisponivel(false);
+            
+            daoVeiculo.persist(venda.getVeiculo());
             
             // 3 - fechar a aplicação
             this.dispose();

@@ -71,7 +71,7 @@ public class ListaVendas extends javax.swing.JFrame {
         areaBusca.setLayout(areaBuscaLayout);
         areaBuscaLayout.setHorizontalGroup(
             areaBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 522, Short.MAX_VALUE)
         );
         areaBuscaLayout.setVerticalGroup(
             areaBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
