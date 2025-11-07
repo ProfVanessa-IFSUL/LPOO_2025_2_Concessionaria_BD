@@ -4,6 +4,7 @@
  */
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
@@ -39,4 +40,19 @@ public class VeiculoDAO extends PersistenciaJPA {
             em.close();
         }
     }
+    
+    public List<Veiculo> listaVeiculos(String placa) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Veiculo> query
+                    = em.createQuery("SELECT v FROM Veiculo v where v.placa like :placa", Veiculo.class);
+            query.setParameter("placa", "%"+placa.toUpperCase()+"%");
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
 }
