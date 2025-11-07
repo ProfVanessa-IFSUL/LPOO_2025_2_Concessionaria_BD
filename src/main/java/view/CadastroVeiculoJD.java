@@ -203,11 +203,23 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
             String placa = txtPlaca.getText().trim().replaceAll("-", "").toUpperCase();
            
             
+            /*
             if(placa.length() != 7){
                 JOptionPane.showMessageDialog(rootPane, "Placa inválida! Padrão: ABC1234");
                 return;
             } else {
                 veiculo.setPlaca(placa);
+            }
+            */
+            String regexPlaca = "[A-Z]{3}[0-9][A-Z0-9][0-9]{2}";
+
+
+            if (placa.matches(regexPlaca)) {
+                veiculo.setPlaca(placa);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Placa inválida!\n"
+                        + "O formato deve ter 7 dígitos, seguindo o padrão ABC1234 ou ABC1D23.");
+                return;
             }
             
             

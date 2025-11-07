@@ -11,6 +11,7 @@ import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Vendedor;
+import model.dao.Util;
 
 /**
  *
@@ -155,8 +156,13 @@ public class CadastroClienteJD extends javax.swing.JDialog {
             cliente = new Cliente();
         
         try{
-            this.cliente.setNome(txtNome.getText());
-            this.cliente.setCPF(txtCPF.getText());
+            String cpf = txtCPF.getText().replace(".", "").replace("-", "");
+            this.cliente.setNome(txtNome.getText().trim());
+            if(Util.validaCPF(cpf)){
+                this.cliente.setCPF(cpf);
+            } else {
+                return;
+            }
             // sintaxe para conversão: LocalDate.parse(String com data, máscara)
             this.cliente.setDataNascimento(LocalDate.parse(txtDtNascimento.getText(), formatter));
             this.cliente.setTelefone(txtTelefone.getText());
